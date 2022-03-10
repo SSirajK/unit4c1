@@ -1,0 +1,404 @@
+// used mongodb compass for the data import from mockaroo
+
+> show dbs
+admin    0.000GB
+cluster  0.000GB
+columns  0.000GB
+config   0.000GB
+local    0.000GB
+> show collections
+fields
+> db.fields.find({movie_name : {$eq: "Despicable Me"}}).pretty()
+{
+        "_id" : ObjectId("622a51e9c3861275daeb1a79"),
+        "id" : 10,
+        "movie_name" : "Despicable Me",
+        "movie_genre" : "Animation|Children|Comedy|Crime",
+        "production_year" : 2007,
+        "budget" : "12514.13"
+}
+> db.fields.find({movie_name : {$ne: "Despicable Me"}}).limit(10)
+{ "_id" : ObjectId("622a51e9c3861275daeb1a70"), "id" : 1, "movie_name" : "Earth Is a Sinful Song, The (Maa on syntinen laulu)", "movie_genre" : "Drama", "production_year" : 2008, "budget" : "19111.21" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a71"), "id" : 2, "movie_name" : "Alila", "movie_genre" : "Drama", "production_year" : 1969, "budget" : "12814.37" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a72"), "id" : 3, "movie_name" : "Who Can Kill a Child? (a.k.a. Island of the Damned) (¿Quién puede matar a un niño?)", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2009, "budget" : "17872.85" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a73"), "id" : 4, "movie_name" : "8 Seconds", "movie_genre" : "Drama", "production_year" : 2006, "budget" : "13746.02" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a74"), "id" : 5, "movie_name" : "Death Kiss, The", "movie_genre" : "Comedy|Mystery", "production_year" : 1995, "budget" : "9547.12" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a75"), "id" : 6, "movie_name" : "Cheech & Chong: Still Smokin'", "movie_genre" : "Comedy", "production_year" : 2007, "budget" : "15286.19" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a76"), "id" : 7, "movie_name" : "Santa Claus Conquers the Martians", "movie_genre" : "Fantasy|Sci-Fi", "production_year" : 1994, "budget" : "12379.75" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a77"), "id" : 8, "movie_name" : "Admission", "movie_genre" : "Comedy|Romance", "production_year" : 1993, "budget" : "11243.92" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a78"), "id" : 9, "movie_name" : "Adulthood", "movie_genre" : "Drama", "production_year" : 2001, "budget" : "17414.39" }
+{ "_id" : ObjectId("622a51e9c3861275daeb1a7a"), "id" : 11, "movie_name" : "Gigante", "movie_genre" : "Comedy|Drama", "production_year" : 2005, "budget" : "18028.72" }
+
+
+> db.fields.find({$and: [{"budget": {$gt: 10000}}, {"budget": {$gte: 10000}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c66"), "id" : 1, "movie_name" : "The Inhabited Island", "movie_genre" : "Fantasy|Sci-Fi", "production_year" : 1997, "budget" : 14946 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c67"), "id" : 2, "movie_name" : "Ballroom, The (Chega de Saudade)", "movie_genre" : "Drama|Musical|Romance", "production_year" : 2006, "budget" : 11164 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c68"), "id" : 3, "movie_name" : "Colourful (Karafuru)", "movie_genre" : "Animation|Drama|Fantasy|Mystery", "production_year" : 1988, "budget" : 15377 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c69"), "id" : 4, "movie_name" : "My Little Eye", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 16392 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6a"), "id" : 5, "movie_name" : "Trog", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2001, "budget" : 19295 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6b"), "id" : 6, "movie_name" : "Sex Ed", "movie_genre" : "Comedy|Romance", "production_year" : 2007, "budget" : 16507 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6c"), "id" : 7, "movie_name" : "Top of the Food Chain (a.k.a. Invasion!)", "movie_genre" : "Comedy|Horror|Sci-Fi", "production_year" : 2005, "budget" : 19182 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6d"), "id" : 8, "movie_name" : "Trio", "movie_genre" : "Drama|Romance", "production_year" : 2002, "budget" : 17992 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6e"), "id" : 9, "movie_name" : "Is the Man Who Is Tall Happy?", "movie_genre" : "Animation|Documentary", "production_year" : 2012, "budget" : 19120 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6f"), "id" : 10, "movie_name" : "Never Play Clever Again (Gendarme et les gendarmettes, Le)", "movie_genre" : "Comedy|Crime", "production_year" : 2008, "budget" : 16649 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c71"), "id" : 12, "movie_name" : "Cross My Heart", "movie_genre" : "Comedy|Romance", "production_year" : 1997, "budget" : 18456 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c72"), "id" : 13, "movie_name" : "Magdalene Sisters, The", "movie_genre" : "Drama", "production_year" : 2009, "budget" : 11310 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c73"), "id" : 14, "movie_name" : "I Walked with a Zombie", "movie_genre" : "Drama|Horror", "production_year" : 2002, "budget" : 11998 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c74"), "id" : 15, "movie_name" : "Mirrors", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 14441 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c75"), "id" : 16, "movie_name" : "Justice League: Throne of Atlantis", "movie_genre" : "Action|Animation", "production_year" : 2006, "budget" : 12681 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c77"), "id" : 18, "movie_name" : "Changing Lanes", "movie_genre" : "Drama|Thriller", "production_year" : 1998, "budget" : 11249 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c78"), "id" : 19, "movie_name" : "Madame Tutli-Putli", "movie_genre" : "Animation|Fantasy", "production_year" : 2007, "budget" : 18561 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c79"), "id" : 20, "movie_name" : "Anthropophagus: The Grim Reaper (Antropophagus) (Man Beast) (Savage Island, The) (Zombie's Rage, The)", "movie_genre" : "Horror", "production_year" : 1999, "budget" : 11870 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7b"), "id" : 22, "movie_name" : "On the Edge", "movie_genre" : "Drama", "production_year" : 1997, "budget" : 18724 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7c"), "id" : 23, "movie_name" : "Well Digger's Daughter, The (La fille du puisatier)", "movie_genre" : "Comedy|Drama|Romance", "production_year" : 1999, "budget" : 18632 }
+
+
+> db.fields.find({$and: [{"budget": {$lt: 15000}}, {"budget": {$lte: 15000}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c66"), "id" : 1, "movie_name" : "The Inhabited Island", "movie_genre" : "Fantasy|Sci-Fi", "production_year" : 1997, "budget" : 14946 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c67"), "id" : 2, "movie_name" : "Ballroom, The (Chega de Saudade)", "movie_genre" : "Drama|Musical|Romance", "production_year" : 2006, "budget" : 11164 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c70"), "id" : 11, "movie_name" : "Música Campesina (Country Music)", "movie_genre" : "Comedy|Drama", "production_year" : 2005, "budget" : 9006 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c72"), "id" : 13, "movie_name" : "Magdalene Sisters, The", "movie_genre" : "Drama", "production_year" : 2009, "budget" : 11310 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c73"), "id" : 14, "movie_name" : "I Walked with a Zombie", "movie_genre" : "Drama|Horror", "production_year" : 2002, "budget" : 11998 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c74"), "id" : 15, "movie_name" : "Mirrors", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 14441 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c75"), "id" : 16, "movie_name" : "Justice League: Throne of Atlantis", "movie_genre" : "Action|Animation", "production_year" : 2006, "budget" : 12681 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c76"), "id" : 17, "movie_name" : "The Land Before Time XIII: The Wisdom of Friends", "movie_genre" : "Animation|Children", "production_year" : 2004, "budget" : 9927 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c77"), "id" : 18, "movie_name" : "Changing Lanes", "movie_genre" : "Drama|Thriller", "production_year" : 1998, "budget" : 11249 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c79"), "id" : 20, "movie_name" : "Anthropophagus: The Grim Reaper (Antropophagus) (Man Beast) (Savage Island, The) (Zombie's Rage, The)", "movie_genre" : "Horror", "production_year" : 1999, "budget" : 11870 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7a"), "id" : 21, "movie_name" : "I Am Love (Io sono l'amore)", "movie_genre" : "Drama|Romance", "production_year" : 2007, "budget" : 9283 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7d"), "id" : 24, "movie_name" : "Dogma", "movie_genre" : "Adventure|Comedy|Fantasy", "production_year" : 1993, "budget" : 14190 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7e"), "id" : 25, "movie_name" : "Tie Xi Qu: West of the Tracks (Tiexi qu)", "movie_genre" : "Documentary", "production_year" : 1985, "budget" : 14851 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c83"), "id" : 30, "movie_name" : "Scent of a Woman", "movie_genre" : "Drama", "production_year" : 2000, "budget" : 12379 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c86"), "id" : 33, "movie_name" : "Next Best Thing, The", "movie_genre" : "Comedy|Drama", "production_year" : 1995, "budget" : 10687 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c87"), "id" : 34, "movie_name" : "Casey Jones", "movie_genre" : "Action|Adventure|Fantasy", "production_year" : 2001, "budget" : 13232 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c88"), "id" : 35, "movie_name" : "Twilight of the Golds, The", "movie_genre" : "Drama", "production_year" : 1999, "budget" : 9515 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c8a"), "id" : 37, "movie_name" : "Nines, The", "movie_genre" : "Drama|Mystery", "production_year" : 2006, "budget" : 14911 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c8f"), "id" : 42, "movie_name" : "Relative Strangers", "movie_genre" : "Comedy", "production_year" : 2007, "budget" : 12347 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c92"), "id" : 45, "movie_name" : "My Friend Flicka", "movie_genre" : "Children|Western", "production_year" : 1989, "budget" : 13900 }
+
+
+> db.fields.find({$and: [{"production_year": {$gt: 2000}}, {"budget": {$gt: 10000}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c67"), "id" : 2, "movie_name" : "Ballroom, The (Chega de Saudade)", "movie_genre" : "Drama|Musical|Romance", "production_year" : 2006, "budget" : 11164 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c69"), "id" : 4, "movie_name" : "My Little Eye", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 16392 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6a"), "id" : 5, "movie_name" : "Trog", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2001, "budget" : 19295 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6b"), "id" : 6, "movie_name" : "Sex Ed", "movie_genre" : "Comedy|Romance", "production_year" : 2007, "budget" : 16507 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6c"), "id" : 7, "movie_name" : "Top of the Food Chain (a.k.a. Invasion!)", "movie_genre" : "Comedy|Horror|Sci-Fi", "production_year" : 2005, "budget" : 19182 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6d"), "id" : 8, "movie_name" : "Trio", "movie_genre" : "Drama|Romance", "production_year" : 2002, "budget" : 17992 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6e"), "id" : 9, "movie_name" : "Is the Man Who Is Tall Happy?", "movie_genre" : "Animation|Documentary", "production_year" : 2012, "budget" : 19120 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6f"), "id" : 10, "movie_name" : "Never Play Clever Again (Gendarme et les gendarmettes, Le)", "movie_genre" : "Comedy|Crime", "production_year" : 2008, "budget" : 16649 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c72"), "id" : 13, "movie_name" : "Magdalene Sisters, The", "movie_genre" : "Drama", "production_year" : 2009, "budget" : 11310 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c73"), "id" : 14, "movie_name" : "I Walked with a Zombie", "movie_genre" : "Drama|Horror", "production_year" : 2002, "budget" : 11998 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c74"), "id" : 15, "movie_name" : "Mirrors", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 14441 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c75"), "id" : 16, "movie_name" : "Justice League: Throne of Atlantis", "movie_genre" : "Action|Animation", "production_year" : 2006, "budget" : 12681 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c78"), "id" : 19, "movie_name" : "Madame Tutli-Putli", "movie_genre" : "Animation|Fantasy", "production_year" : 2007, "budget" : 18561 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7f"), "id" : 26, "movie_name" : "Detroit 9000", "movie_genre" : "Action|Crime", "production_year" : 2002, "budget" : 19497 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c81"), "id" : 28, "movie_name" : "Gravedancers, The", "movie_genre" : "Horror|Thriller", "production_year" : 2012, "budget" : 16165 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c82"), "id" : 29, "movie_name" : "Producers, The", "movie_genre" : "Comedy", "production_year" : 2012, "budget" : 19452 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c84"), "id" : 31, "movie_name" : "Benny & Joon", "movie_genre" : "Comedy|Romance", "production_year" : 2011, "budget" : 19906 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c87"), "id" : 34, "movie_name" : "Casey Jones", "movie_genre" : "Action|Adventure|Fantasy", "production_year" : 2001, "budget" : 13232 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c89"), "id" : 36, "movie_name" : "Brief Crossing (Brève traversée)", "movie_genre" : "Comedy|Drama|Romance", "production_year" : 2011, "budget" : 17299 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c8a"), "id" : 37, "movie_name" : "Nines, The", "movie_genre" : "Drama|Mystery", "production_year" : 2006, "budget" : 14911 }
+
+
+> db.fields.find({$or: [{"production_year": {$gt: 2000}}, {"budget": {$gt: 10000}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c67"), "id" : 2, "movie_name" : "Ballroom, The (Chega de Saudade)", "movie_genre" : "Drama|Musical|Romance", "production_year" : 2006, "budget" : 11164 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c69"), "id" : 4, "movie_name" : "My Little Eye", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 16392 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6a"), "id" : 5, "movie_name" : "Trog", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2001, "budget" : 19295 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6b"), "id" : 6, "movie_name" : "Sex Ed", "movie_genre" : "Comedy|Romance", "production_year" : 2007, "budget" : 16507 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6c"), "id" : 7, "movie_name" : "Top of the Food Chain (a.k.a. Invasion!)", "movie_genre" : "Comedy|Horror|Sci-Fi", "production_year" : 2005, "budget" : 19182 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6d"), "id" : 8, "movie_name" : "Trio", "movie_genre" : "Drama|Romance", "production_year" : 2002, "budget" : 17992 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6e"), "id" : 9, "movie_name" : "Is the Man Who Is Tall Happy?", "movie_genre" : "Animation|Documentary", "production_year" : 2012, "budget" : 19120 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6f"), "id" : 10, "movie_name" : "Never Play Clever Again (Gendarme et les gendarmettes, Le)", "movie_genre" : "Comedy|Crime", "production_year" : 2008, "budget" : 16649 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c70"), "id" : 11, "movie_name" : "Música Campesina (Country Music)", "movie_genre" : "Comedy|Drama", "production_year" : 2005, "budget" : 9006 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c72"), "id" : 13, "movie_name" : "Magdalene Sisters, The", "movie_genre" : "Drama", "production_year" : 2009, "budget" : 11310 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c73"), "id" : 14, "movie_name" : "I Walked with a Zombie", "movie_genre" : "Drama|Horror", "production_year" : 2002, "budget" : 11998 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c74"), "id" : 15, "movie_name" : "Mirrors", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 14441 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c75"), "id" : 16, "movie_name" : "Justice League: Throne of Atlantis", "movie_genre" : "Action|Animation", "production_year" : 2006, "budget" : 12681 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c76"), "id" : 17, "movie_name" : "The Land Before Time XIII: The Wisdom of Friends", "movie_genre" : "Animation|Children", "production_year" : 2004, "budget" : 9927 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c78"), "id" : 19, "movie_name" : "Madame Tutli-Putli", "movie_genre" : "Animation|Fantasy", "production_year" : 2007, "budget" : 18561 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7a"), "id" : 21, "movie_name" : "I Am Love (Io sono l'amore)", "movie_genre" : "Drama|Romance", "production_year" : 2007, "budget" : 9283 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7f"), "id" : 26, "movie_name" : "Detroit 9000", "movie_genre" : "Action|Crime", "production_year" : 2002, "budget" : 19497 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c81"), "id" : 28, "movie_name" : "Gravedancers, The", "movie_genre" : "Horror|Thriller", "production_year" : 2012, "budget" : 16165 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c82"), "id" : 29, "movie_name" : "Producers, The", "movie_genre" : "Comedy", "production_year" : 2012, "budget" : 19452 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c84"), "id" : 31, "movie_name" : "Benny & Joon", "movie_genre" : "Comedy|Romance", "production_year" : 2011, "budget" : 19906 }
+
+
+> db.fields.find({ $nor: [{"production_year": {$gt: 2000}}, {"budget": {$gt: 10000}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c88"), "id" : 35, "movie_name" : "Twilight of the Golds, The", "movie_genre" : "Drama", "production_year" : 1999, "budget" : 9515 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c95"), "id" : 48, "movie_name" : "Madame Sin", "movie_genre" : "Thriller", "production_year" : 1998, "budget" : 9187 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c9a"), "id" : 53, "movie_name" : "Nightmares in Red White & Blue: The Evolution of the American Horror Film", "movie_genre" : "Documentary|Horror", "production_year" : 1997, "budget" : 9195 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1cbb"), "id" : 86, "movie_name" : "Penalty, The", "movie_genre" : "Crime|Drama|Horror", "production_year" : 1990, "budget" : 9713 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1cca"), "id" : 101, "movie_name" : "Full Monty, The", "movie_genre" : "Comedy|Drama", "production_year" : 1998, "budget" : 9924 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1ce7"), "id" : 130, "movie_name" : "2016: Obama's America", "movie_genre" : "Documentary", "production_year" : 1999, "budget" : 9606 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1cfa"), "id" : 149, "movie_name" : "Evocateur: The Morton Downey Jr. Movie", "movie_genre" : "Documentary", "production_year" : 1993, "budget" : 9116 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d03"), "id" : 158, "movie_name" : "Family Friend, The (L'amico di famiglia)", "movie_genre" : "Drama", "production_year" : 1988, "budget" : 9252 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d17"), "id" : 178, "movie_name" : "Year of Living Vicariously, The", "movie_genre" : "Documentary", "production_year" : 1998, "budget" : 9226 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d36"), "id" : 209, "movie_name" : "Abendland", "movie_genre" : "Documentary", "production_year" : 1988, "budget" : 9760 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d4f"), "id" : 234, "movie_name" : "Lottery, The", "movie_genre" : "Documentary|Drama", "production_year" : 1999, "budget" : 9126 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d9a"), "id" : 309, "movie_name" : "Malone", "movie_genre" : "Action|Drama|Thriller", "production_year" : 1991, "budget" : 9137 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1dde"), "id" : 377, "movie_name" : "Two Thousand Maniacs!", "movie_genre" : "Horror", "production_year" : 1984, "budget" : 9300 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1df5"), "id" : 400, "movie_name" : "Casualties of War", "movie_genre" : "Drama|War", "production_year" : 2000, "budget" : 9011 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e10"), "id" : 427, "movie_name" : "East Palace West Palace (Dong gong xi gong)", "movie_genre" : "Drama", "production_year" : 1996, "budget" : 9409 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e27"), "id" : 450, "movie_name" : "Dear White People", "movie_genre" : "Comedy|Drama", "production_year" : 1999, "budget" : 9772 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e2a"), "id" : 453, "movie_name" : "Me & Isaac Newton", "movie_genre" : "Documentary", "production_year" : 1989, "budget" : 9392 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e2d"), "id" : 456, "movie_name" : "Sorcerer", "movie_genre" : "Action|Thriller", "production_year" : 1998, "budget" : 9257 }
+
+
+> db.fields.find({ $nor: [{"production_year": 2000}, {"budget": 10000}]}).pretty()
+
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c66"),
+        "id" : 1,
+        "movie_name" : "The Inhabited Island",
+        "movie_genre" : "Fantasy|Sci-Fi",
+        "production_year" : 1997,
+        "budget" : 14946
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c67"),
+        "id" : 2,
+        "movie_name" : "Ballroom, The (Chega de Saudade)",
+        "movie_genre" : "Drama|Musical|Romance",
+        "production_year" : 2006,
+        "budget" : 11164
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c68"),
+        "id" : 3,
+        "movie_name" : "Colourful (Karafuru)",
+        "movie_genre" : "Animation|Drama|Fantasy|Mystery",
+        "production_year" : 1988,
+        "budget" : 15377
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c69"),
+        "id" : 4,
+        "movie_name" : "My Little Eye",
+        "movie_genre" : "Horror|Mystery|Thriller",
+        "production_year" : 2003,
+        "budget" : 16392
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6a"),
+        "id" : 5,
+        "movie_name" : "Trog",
+        "movie_genre" : "Horror|Sci-Fi",
+        "production_year" : 2001,
+        "budget" : 19295
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6b"),
+        "id" : 6,
+        "movie_name" : "Sex Ed",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 2007,
+        "budget" : 16507
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6c"),
+        "id" : 7,
+        "movie_name" : "Top of the Food Chain (a.k.a. Invasion!)",
+        "movie_genre" : "Comedy|Horror|Sci-Fi",
+        "production_year" : 2005,
+        "budget" : 19182
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6d"),
+        "id" : 8,
+        "movie_name" : "Trio",
+        "movie_genre" : "Drama|Romance",
+        "production_year" : 2002,
+        "budget" : 17992
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6e"),
+        "id" : 9,
+        "movie_name" : "Is the Man Who Is Tall Happy?",
+        "movie_genre" : "Animation|Documentary",
+        "production_year" : 2012,
+        "budget" : 19120
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c6f"),
+        "id" : 10,
+        "movie_name" : "Never Play Clever Again (Gendarme et les gendarmettes, Le)",
+        "movie_genre" : "Comedy|Crime",
+        "production_year" : 2008,
+        "budget" : 16649
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c70"),
+        "id" : 11,
+        "movie_name" : "Música Campesina (Country Music)",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2005,
+        "budget" : 9006
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c71"),
+        "id" : 12,
+        "movie_name" : "Cross My Heart",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 1997,
+        "budget" : 18456
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c72"),
+        "id" : 13,
+        "movie_name" : "Magdalene Sisters, The",
+        "movie_genre" : "Drama",
+        "production_year" : 2009,
+        "budget" : 11310
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c73"),
+        "id" : 14,
+        "movie_name" : "I Walked with a Zombie",
+        "movie_genre" : "Drama|Horror",
+        "production_year" : 2002,
+        "budget" : 11998
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c74"),
+        "id" : 15,
+        "movie_name" : "Mirrors",
+        "movie_genre" : "Horror|Mystery|Thriller",
+        "production_year" : 2003,
+        "budget" : 14441
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c75"),
+        "id" : 16,
+        "movie_name" : "Justice League: Throne of Atlantis",
+        "movie_genre" : "Action|Animation",
+        "production_year" : 2006,
+        "budget" : 12681
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c76"),
+        "id" : 17,
+        "movie_name" : "The Land Before Time XIII: The Wisdom of Friends",
+        "movie_genre" : "Animation|Children",
+        "production_year" : 2004,
+        "budget" : 9927
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c77"),
+        "id" : 18,
+        "movie_name" : "Changing Lanes",
+        "movie_genre" : "Drama|Thriller",
+        "production_year" : 1998,
+        "budget" : 11249
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c78"),
+        "id" : 19,
+        "movie_name" : "Madame Tutli-Putli",
+        "movie_genre" : "Animation|Fantasy",
+        "production_year" : 2007,
+        "budget" : 18561
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1c79"),
+        "id" : 20,
+        "movie_name" : "Anthropophagus: The Grim Reaper (Antropophagus) (Man Beast) (Savage Island, The) (Zombie's Rage, The)",
+        "movie_genre" : "Horror",
+        "production_year" : 1999,
+        "budget" : 11870
+}
+
+
+> db.fields.find({$and: [{"production_year": {$gte: 2000}}, {"production_year": {$lte: 2010}}]})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1c67"), "id" : 2, "movie_name" : "Ballroom, The (Chega de Saudade)", "movie_genre" : "Drama|Musical|Romance", "production_year" : 2006, "budget" : 11164 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c69"), "id" : 4, "movie_name" : "My Little Eye", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 16392 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6a"), "id" : 5, "movie_name" : "Trog", "movie_genre" : "Horror|Sci-Fi", "production_year" : 2001, "budget" : 19295 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6b"), "id" : 6, "movie_name" : "Sex Ed", "movie_genre" : "Comedy|Romance", "production_year" : 2007, "budget" : 16507 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6c"), "id" : 7, "movie_name" : "Top of the Food Chain (a.k.a. Invasion!)", "movie_genre" : "Comedy|Horror|Sci-Fi", "production_year" : 2005, "budget" : 19182 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6d"), "id" : 8, "movie_name" : "Trio", "movie_genre" : "Drama|Romance", "production_year" : 2002, "budget" : 17992 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c6f"), "id" : 10, "movie_name" : "Never Play Clever Again (Gendarme et les gendarmettes, Le)", "movie_genre" : "Comedy|Crime", "production_year" : 2008, "budget" : 16649 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c70"), "id" : 11, "movie_name" : "Música Campesina (Country Music)", "movie_genre" : "Comedy|Drama", "production_year" : 2005, "budget" : 9006 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c72"), "id" : 13, "movie_name" : "Magdalene Sisters, The", "movie_genre" : "Drama", "production_year" : 2009, "budget" : 11310 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c73"), "id" : 14, "movie_name" : "I Walked with a Zombie", "movie_genre" : "Drama|Horror", "production_year" : 2002, "budget" : 11998 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c74"), "id" : 15, "movie_name" : "Mirrors", "movie_genre" : "Horror|Mystery|Thriller", "production_year" : 2003, "budget" : 14441 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c75"), "id" : 16, "movie_name" : "Justice League: Throne of Atlantis", "movie_genre" : "Action|Animation", "production_year" : 2006, "budget" : 12681 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c76"), "id" : 17, "movie_name" : "The Land Before Time XIII: The Wisdom of Friends", "movie_genre" : "Animation|Children", "production_year" : 2004, "budget" : 9927 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c78"), "id" : 19, "movie_name" : "Madame Tutli-Putli", "movie_genre" : "Animation|Fantasy", "production_year" : 2007, "budget" : 18561 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7a"), "id" : 21, "movie_name" : "I Am Love (Io sono l'amore)", "movie_genre" : "Drama|Romance", "production_year" : 2007, "budget" : 9283 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7f"), "id" : 26, "movie_name" : "Detroit 9000", "movie_genre" : "Action|Crime", "production_year" : 2002, "budget" : 19497 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c83"), "id" : 30, "movie_name" : "Scent of a Woman", "movie_genre" : "Drama", "production_year" : 2000, "budget" : 12379 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c87"), "id" : 34, "movie_name" : "Casey Jones", "movie_genre" : "Action|Adventure|Fantasy", "production_year" : 2001, "budget" : 13232 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c8a"), "id" : 37, "movie_name" : "Nines, The", "movie_genre" : "Drama|Mystery", "production_year" : 2006, "budget" : 14911 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c8b"), "id" : 38, "movie_name" : "Eaux d'artifice", "movie_genre" : "Fantasy", "production_year" : 2007, "budget" : 17150 }
+
+
+> db.fields.find({}).sort({"production_year":1, "movie_name":1})
+
+{ "_id" : ObjectId("622a61e2c3861275daeb1cbe"), "id" : 89, "movie_name" : "One Shot", "movie_genre" : "Documentary", "production_year" : 1957, "budget" : 15036 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1db2"), "id" : 333, "movie_name" : "Submarino", "movie_genre" : "Drama", "production_year" : 1964, "budget" : 18425 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1df8"), "id" : 403, "movie_name" : "Snowball Effect: The Story of 'Clerks'", "movie_genre" : "Documentary", "production_year" : 1968, "budget" : 15144 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d9c"), "id" : 311, "movie_name" : "My Demon Lover", "movie_genre" : "Comedy|Horror", "production_year" : 1969, "budget" : 19128 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d7f"), "id" : 282, "movie_name" : "Camilla", "movie_genre" : "Adventure|Drama|Romance", "production_year" : 1970, "budget" : 12710 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1dee"), "id" : 393, "movie_name" : "Earth Trembles, The (Terra trema: Episodio del mare, La)", "movie_genre" : "Drama", "production_year" : 1980, "budget" : 14038 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1cd9"), "id" : 116, "movie_name" : "13/13/13", "movie_genre" : "Horror", "production_year" : 1984, "budget" : 11781 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e19"), "id" : 436, "movie_name" : "How to Rob a Bank", "movie_genre" : "Comedy|Crime|Mystery|Thriller", "production_year" : 1984, "budget" : 14134 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d0c"), "id" : 167, "movie_name" : "Papillon", "movie_genre" : "Crime|Drama", "production_year" : 1984, "budget" : 17916 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e0b"), "id" : 422, "movie_name" : "Shoppen ", "movie_genre" : "Comedy|Romance", "production_year" : 1984, "budget" : 14571 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1dde"), "id" : 377, "movie_name" : "Two Thousand Maniacs!", "movie_genre" : "Horror", "production_year" : 1984, "budget" : 9300 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e15"), "id" : 432, "movie_name" : "When Jews Were Funny", "movie_genre" : "Documentary", "production_year" : 1984, "budget" : 13230 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d10"), "id" : 171, "movie_name" : "Armless", "movie_genre" : "Comedy", "production_year" : 1985, "budget" : 10041 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e03"), "id" : 414, "movie_name" : "Balloonatic, The", "movie_genre" : "Comedy", "production_year" : 1985, "budget" : 12854 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e33"), "id" : 462, "movie_name" : "Career", "movie_genre" : "Drama", "production_year" : 1985, "budget" : 19914 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1ca9"), "id" : 68, "movie_name" : "Double Tide", "movie_genre" : "Documentary", "production_year" : 1985, "budget" : 12886 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1d0b"), "id" : 166, "movie_name" : "Killer, The (Die xue shuang xiong)", "movie_genre" : "Action|Crime|Drama|Thriller", "production_year" : 1985, "budget" : 16401 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1cf3"), "id" : 142, "movie_name" : "Last Chance Harvey", "movie_genre" : "Drama|Romance", "production_year" : 1985, "budget" : 11541 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1c7e"), "id" : 25, "movie_name" : "Tie Xi Qu: West of the Tracks (Tiexi qu)", "movie_genre" : "Documentary", "production_year" : 1985, "budget" : 14851 }
+{ "_id" : ObjectId("622a61e2c3861275daeb1e07"), "id" : 418, "movie_name" : "Wicked City (Yôjû toshi)", "movie_genre" : "Animation|Fantasy|Horror|Sci-Fi", "production_year" : 1985, "budget" : 10659 }
+
+
+> db.fields.find().sort({"production_year":1, "movie_name":1}).skip(10).limit(5).pretty()
+
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1dde"),
+        "id" : 377,
+        "movie_name" : "Two Thousand Maniacs!",
+        "movie_genre" : "Horror",
+        "production_year" : 1984,
+        "budget" : 9300
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1e15"),
+        "id" : 432,
+        "movie_name" : "When Jews Were Funny",
+        "movie_genre" : "Documentary",
+        "production_year" : 1984,
+        "budget" : 13230
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1d10"),
+        "id" : 171,
+        "movie_name" : "Armless",
+        "movie_genre" : "Comedy",
+        "production_year" : 1985,
+        "budget" : 10041
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1e03"),
+        "id" : 414,
+        "movie_name" : "Balloonatic, The",
+        "movie_genre" : "Comedy",
+        "production_year" : 1985,
+        "budget" : 12854
+}
+{
+        "_id" : ObjectId("622a61e2c3861275daeb1e33"),
+        "id" : 462,
+        "movie_name" : "Career",
+        "movie_genre" : "Drama",
+        "production_year" : 1985,
+        "budget" : 19914
+}
